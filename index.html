@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local de Ropa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Fuente personalizada -->
+  <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
+        * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+  body {
+  background: linear-gradient(135deg, #f8cdda, #e2c4f5, #f5e9d7, #e9c3c3, #fddde6);
+  background-size: 400% 400%;
+  animation: fondoSuave 18s ease infinite;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes fondoSuave {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+    header {
+  background: linear-gradient(
+    to bottom,
+    #f8c8dc 0%,    
+    #f8c8dc 20%,
+    #add8e6 20%,   
+    #add8e6 40%,
+    #fffacd 40%,   
+    #fffacd 60%,
+    #90ee90 60%,   
+    #90ee90 80%,
+    #dda0dd 80%,   
+    #dda0dd 100%
+  );
+  padding: 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+}
+
+.logo-nombre img {
+  height: 100px; /* Ajustá según tu logo */
+}
+
+.titulo-colorido {
+  font-family: 'Birthstone', cursive;
+  font-size: 6.5rem;
+  font-weight: 400;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  line-height: 110px;
+  text-align: right;
+  margin-left: auto;
+}
+
+/* Menú debajo del título */
+.menu-principal {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.menu-principal a {
+  text-decoration: none;
+  color: #f9f9f9;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.logo {
+  height: 100px; /* Ajustá según tu imagen */
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+nav a:hover {
+  background-color: #f8bbd0;
+}
+   .hero {
+  height: 900px; /* altura que quieras darle */
+  overflow: hidden; /* para que no se vean partes sobrantes */
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: flex-start; /* alinea la imagen arriba */
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* mantiene proporción y recorta lo necesario */
+  object-position: center top; /* centra horizontalmente y alinea arriba */
+}
+    section {
+      padding: 40px 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .toggle {
+  display: none;
+}
+
+/* Producto estilo */
+.producto {
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+  width: 150px; /* Ajusta según el tamaño que quieras */
+  vertical-align: top;
+}
+
+.producto img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.producto:hover img {
+  transform: scale(1.05);
+}
+
+/* Cuando está chequeado, agrandar la imagen */
+.toggle:checked + .producto img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 1000;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease;
+}
+
+/* Overlay de fondo */
+.overlay {
+  display: none;
+}
+
+/* Mostrar overlay cuando algún checkbox esté activo */
+.toggle:checked ~ .overlay {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(246, 193, 220, 0.881);
+  z-index: 900;
+  cursor: pointer;
+}
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .contacto a {
+      color: #111;
+      font-weight: bold;
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero, section {
+        margin: 20px;
+        padding: 20px;
+      }
+    }
+    #catalogo h2 {
+  font-family: 'Birthstone', cursive;
+  font-size: 3rem;
+  font-weight: 400;
+  color: #e91e63; 
+  background-color: rgba(255, 255, 255, 0.6);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+  display: inline-block;
+}
+#nosotros h2 {
+  font-family: 'Birthstone', cursive;
+  font-size: 3rem;
+  font-weight: 400;
+  color: #fff176; /* Amarillo */
+  background-color: rgba(255, 255, 255, 0.6);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+#contacto h2 {
+  font-family: 'Birthstone', cursive;
+  font-size: 3rem;
+  font-weight: 400;
+  color: #f8bbd0; 
+  background-color: rgba(255, 255, 255, 0.6);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  padding: 0.1rem 0.3rem;
+  border-radius: 2px;
+  display: inline-block;
+}
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 60px;
+  width: 60px;
+  height: 60px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.whatsapp-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.mapa {
+  width: 100%;           /* ocupa todo el ancho del contenedor */
+  max-width: 600px;      /* ancho máximo para que no quede gigante */
+  height: 350px;         /* altura cómoda para visualizar el mapa */
+  margin: 20px auto;     /* margen arriba y abajo, y centrado horizontal */
+  border: 2px solid #ccc; /* borde gris claro */
+  border-radius: 10px;    /* esquinas redondeadas */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* sombra sutil para darle profundidad */
+  display: block;        /* para que el margin auto funcione bien */
+}
+.mapa iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+  display: block;
+}
+.redes-sociales {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.redes-sociales img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.redes-sociales img:hover {
+  transform: scale(1.2);
+}
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+  }
+
+  .logo-nombre img {
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  .titulo-colorido {
+    font-size: 4rem;
+    line-height: 1.2;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .menu-principal {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .menu-principal a {
+    font-size: 1rem;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <header>
+  <div class="header-container">
+    <div class="logo-nombre">
+      <img src="Imagenes/logo.png" alt="Logo Coocole" class="logo" />
+    </div>
+
+    <h1 class="titulo-colorido">
+      <span style="color:#e91e63;">C</span>
+      <span style="color:#fff176;">o</span>
+      <span style="color:#f8bbd0;">o</span>
+      <span style="color:#a5d6a7;">c</span>
+      <span style="color:#81d4fa;">o</span>
+      <span style="color:#9575cd;">l</span>
+      <span style="color:#7b1fa2;">é</span>
+    </h1>
+  </div>
+
+  <nav class="menu-principal">
+    <a href="#inicio">Inicio</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#nosotros">Sobre Nosotros</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+  <section id="inicio" class="hero">
+    <img src="Imagenes/imagen inicial.jpeg" alt="Venta Mayorista" loading="lazy">
+  </section>
+
+  <section id="catalogo">
+    <h2>Catálogo de Temporada</h2>
+   <div class="productos">
+
+  <input type="checkbox" id="prod1" class="toggle" />
+  <label for="prod1" class="producto">
+    <img src="Imagenes/art370.jpeg" alt="campera peluche" loading="lazy" />
+    <p>Campera de invierno</p>
+  </label>
+
+  <input type="checkbox" id="prod2" class="toggle" />
+  <label for="prod2" class="producto">
+    <img src="Imagenes/art310.jpeg" alt="chaqueta" loading="lazy" />
+    <p>Campera de invierno</p>
+  </label>
+
+  <input type="checkbox" id="prod3" class="toggle" />
+  <label for="prod3" class="producto">
+    <img src="Imagenes/art315.jpeg" alt="campera" loading="lazy" />
+    <p>Campera de invierno</p>
+  </label>
+
+  <input type="checkbox" id="prod4" class="toggle" />
+  <label for="prod4" class="producto">
+    <img src="Imagenes/art337.jpeg" alt="Buzo" loading="lazy" />
+    <p>Buzo de invierno</p>
+  </label>
+
+  <input type="checkbox" id="prod5" class="toggle" />
+  <label for="prod5" class="producto">
+    <img src="Imagenes/art300.jpeg" alt="Buzo" loading="lazy" />
+    <p>Buzo de invierno</p>
+  </label>
+
+  <input type="checkbox" id="prod6" class="toggle" />
+  <label for="prod6" class="producto">
+    <img src="Imagenes/art386.jpeg" alt="Camiseta de invierno" loading="lazy" />
+    <p>Camiseta de invierno</p>
+  </label>
+
+  <input type="checkbox" id="prod7" class="toggle" />
+  <label for="prod7" class="producto">
+    <img src="Imagenes/art320.jpeg" alt="Pantalon de invierno" loading="lazy" />
+    <p>Pantalón de invierno</p>
+  </label>
+
+  <input type="checkbox" id="prod8" class="toggle" />
+  <label for="prod8" class="producto">
+    <img src="Imagenes/art130.jpeg" alt="Jean oxford" loading="lazy" />
+    <p>Jean</p>
+  </label>
+
+  <input type="checkbox" id="prod9" class="toggle" />
+  <label for="prod9" class="producto">
+    <img src="Imagenes/art139.jpeg" alt="Jean clásico" loading="lazy" />
+    <p>Jean</p>
+  </label>
+
+  <input type="checkbox" id="prod10" class="toggle" />
+  <label for="prod10" class="producto">
+    <img src="Imagenes/art139n.jpeg" alt="Jean clásico oscuro" loading="lazy" />
+    <p>Jean</p>
+  </label>
+
+  <input type="checkbox" id="prod11" class="toggle" />
+  <label for="prod11" class="producto">
+    <img src="Imagenes/art150.jpeg" alt="Jean oxford rígido" loading="lazy" />
+    <p>Jean oxford</p>
+  </label>
+
+  <!-- Overlay para cerrar la imagen ampliada -->
+  <label for="prod1" class="overlay"></label>
+  <label for="prod2" class="overlay"></label>
+  <label for="prod3" class="overlay"></label>
+  <label for="prod4" class="overlay"></label>
+  <label for="prod5" class="overlay"></label>
+  <label for="prod6" class="overlay"></label>
+  <label for="prod7" class="overlay"></label>
+  <label for="prod8" class="overlay"></label>
+  <label for="prod9" class="overlay"></label>
+  <label for="prod10" class="overlay"></label>
+  <label for="prod11" class="overlay"></label>
+
+</div>
+  </section>
+
+  <section id="nosotros">
+    <h2>Sobre Nosotros</h2>
+    <p>Somos una tienda de ropa con estilo propio, elegimos cada prenda pensando en vos. Estamos en [Ciudad/Barrio], y nuestra misión es que encuentres tu look ideal cada temporada.</p>
+  </section>
+
+  <section id="contacto" class="contacto">
+  <h2>Contactanos</h2>
+
+  <div class="redes-sociales">
+    <a href="https://wa.me/5491123456789" target="_blank" aria-label="WhatsApp">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+    </a>
+    <a href="https://instagram.com/tulocal" target="_blank" aria-label="Instagram">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" />
+    </a>
+    <a href="https://facebook.com/tulocal" target="_blank" aria-label="Facebook">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" />
+    </a>
+    <a href="https://tiktok.com/@tulocal" target="_blank" aria-label="TikTok">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok" />
+    </a>
+  </div>
+
+  <p class="direccion-mapa">
+    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Icono Mapa" width="20" style="vertical-align: middle; margin-right: 5px;" />
+    Concordia 135, CABA
+  </p>
+
+  <div class="mapa">
+   <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.3810547444196!2d-58.47896262408491!3d-34.630467296545144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc99190ff84bd%3A0x1cccf8f4fec1519a!2sConcordia%20135%2C%20C1407GCJ%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1715887280000!5m2!1ses-419!2sar"
+  width="600"
+  height="450"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+  </div>
+</section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Coocolé - Todos los derechos reservados</p>
+  </footer>
+<a href="https://wa.me/1165639070" target="_blank" class="whatsapp-float">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+</a>
+</body>
+</html>
